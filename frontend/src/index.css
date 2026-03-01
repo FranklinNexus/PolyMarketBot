@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   PEARL VAULT — Premium Porcelain Theme
+   Cyber-Cute × Glossy White × Refined Kirakira
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+@theme {
+  /* ── Core Palette ─────────────────── */
+  --color-sakura:          #FFB6C1;
+  --color-sakura-deep:     #E8879B;
+  --color-sakura-soft:     #FFD0D9;
+  --color-sakura-pale:     #FFF0F3;
+  --color-sakura-whisper:  #FFF8F9;
+
+  --color-unicorn:         #D8BFD8;
+  --color-unicorn-deep:    #B594C0;
+  --color-unicorn-soft:    #E8D5F0;
+  --color-unicorn-pale:    #F4ECF8;
+
+  --color-pearl:           #FDFDFF;
+  --color-pearl-warm:      #FDF5F8;
+  --color-pearl-blush:     #FBF0F4;
+
+  --color-rose-gray:       #5A5565;
+  --color-rose-gray-mid:   #8E8A96;
+  --color-rose-gray-light: #ACA8B4;
+  --color-rose-gray-faint: #CDC9D4;
+
+  --color-glaze:           rgba(255, 255, 255, 0.72);
+  --color-glaze-strong:    rgba(255, 255, 255, 0.88);
+
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ── Reset ─────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-display);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(255, 210, 220, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, rgba(216, 191, 216, 0.10) 0%, transparent 60%),
+    linear-gradient(168deg, #FFFFFF 0%, #FDF5F8 35%, #FBF0F4 65%, #F8F2FA 100%);
+  color: var(--color-rose-gray);
+  overflow-x: hidden;
+}
+
+#root { min-height: 100vh; }
+
+/* ── Keyframes ─────────────────────────────────── */
+
+@keyframes sparkle-drift {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  15% { opacity: 0.7; }
+  85% { opacity: 0.7; }
+  100% {
+    transform: translateY(-100vh) scale(0.3) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes gem-twinkle {
+  0%, 100% { opacity: 0.08; transform: scale(0.8); }
+  50%      { opacity: 0.35; transform: scale(1.1); }
+}
+
+@keyframes glide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes text-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+@keyframes border-flow {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes soft-pulse {
+  0%, 100% { opacity: 0.6; }
+  50%      { opacity: 1; }
+}
+
+@keyframes macaron-squish {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.94); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ── Porcelain Card ────────────────────────────── */
+
+.pearl-card {
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(253, 245, 248, 0.80) 50%,
+    rgba(255, 255, 255, 0.88) 100%
+  );
+  border-radius: 20px;
+  border: 1px solid rgba(255, 195, 210, 0.15);
+  box-shadow:
+    0 1px 3px rgba(180, 160, 180, 0.04),
+    0 6px 24px rgba(255, 182, 193, 0.08),
+    0 12px 48px rgba(216, 191, 216, 0.04);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Glaze highlight */
+.pearl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 45%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55) 0%,
+    rgba(255, 255, 255, 0.15) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 20px 20px 0 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pearl-card:hover {
+  border-color: rgba(255, 182, 193, 0.28);
+  box-shadow:
+    0 2px 6px rgba(180, 160, 180, 0.06),
+    0 10px 36px rgba(255, 182, 193, 0.14),
+    0 20px 60px rgba(216, 191, 216, 0.06);
+  transform: translateY(-3px);
+}
+
+/* ── Macaron Button ────────────────────────────── */
+
+.macaron-btn {
+  background: linear-gradient(135deg, #FFB6C1 0%, #FFC8D6 40%, #FFDCE4 100%);
+  border: none;
+  border-radius: 56px;
+  color: #FFFFFF;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow:
+    0 4px 16px rgba(255, 182, 193, 0.28),
+    0 1px 4px rgba(255, 139, 167, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -1px 0 rgba(200, 140, 160, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  text-shadow: 0 1px 2px rgba(180, 100, 120, 0.15);
+}
+
+/* Shimmer sweep */
+.macaron-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%; left: -100%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  animation: shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.macaron-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.40) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 56px 56px 40% 40%;
+  pointer-events: none;
+}
+
+.macaron-btn:hover {
+  box-shadow:
+    0 8px 28px rgba(255, 182, 193, 0.40),
+    0 2px 8px rgba(255, 139, 167, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.50);
+  transform: translateY(-2px);
+}
+
+.macaron-btn:active {
+  animation: macaron-squish 0.3s ease-out;
+}
+
+.macaron-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Unicorn Gradient Border ─────────────────── */
+
+.unicorn-frame {
+  position: relative;
+  border-radius: 22px;
+  padding: 1.5px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 182, 193, 0.45),
+    rgba(216, 191, 216, 0.45),
+    rgba(255, 210, 220, 0.45),
+    rgba(200, 170, 220, 0.45)
+  );
+  background-size: 300% 300%;
+  animation: border-flow 8s ease infinite;
+}
+
+.unicorn-frame-inner {
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 20.5px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* ── Scrollbar ───────────────────────────────── */
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(216, 191, 216, 0.25);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 182, 193, 0.35);
+}

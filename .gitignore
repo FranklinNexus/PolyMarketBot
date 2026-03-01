@@ -1,0 +1,15 @@
+# 忽略环境变量 (最高机密)
+.env
+
+# 忽略本地历史记录插件生成的垃圾文件
+.history/
+*.history
+
+# 忽略 Python 缓存
+__pycache__/
+*.pyc
+
+# 忽略前端依赖包 (体积太大，千万别传)
+node_modules/
+dist/
+.vite/

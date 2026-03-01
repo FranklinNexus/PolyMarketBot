@@ -1,0 +1,6 @@
+py-clob-client
+hyperliquid-python-sdk
+python-dotenv
+eth-account
+scipy
+streamlit
